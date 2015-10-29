@@ -3,14 +3,13 @@ package tw.com.jumbo.deuces.dealer;
 import tw.com.jumbo.deuces.CardConstant;
 
 /**
- * Created by kaihghuang on 2015/10/26.
- * 一般的順子
+ * Created by kaihghuang on 2015/10/29.
  */
-public class FlushCardGroup extends CardGroup {
+public class FullHorseCardGroup extends CardGroup{
 
     private int[] mFlush;
 
-    public FlushCardGroup(int card1,int card2,int card3,int card4,int card5) {
+    public FullHorseCardGroup(int card1,int card2,int card3,int card4,int card5) {
         mFlush = new int[5];
         mFlush[0] = card1;
         mFlush[1] = card2;
@@ -31,8 +30,13 @@ public class FlushCardGroup extends CardGroup {
 
     @Override
     public int compare(CardGroup lhs, CardGroup rhs) {
-        FlushCardGroup lCard = (FlushCardGroup) lhs;
-        FlushCardGroup rCard = (FlushCardGroup) rhs;
+        FullHorseCardGroup lCard = (FullHorseCardGroup) lhs;
+
+        if (!(rhs instanceof FullHorseCardGroup)){
+            return -1;
+        }
+
+        FullHorseCardGroup rCard = (FullHorseCardGroup) rhs;
 
         if (CardConstant.isCardNumber2(lCard.mFlush[0]) && CardConstant.isCardNumber2(lCard.mFlush[0])){
             return lCard.mFlush[0] - rCard.mFlush[0];
